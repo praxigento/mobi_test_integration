@@ -14,14 +14,16 @@
     "lg-zoom": "^1.0.4",
     "lightgallery": "^1.3.7",
     "object-path": "^0.11.3",
-    "phantomjs-prebuilt": "^2.1.14"
+    "phantomjs-prebuilt": "^2.1.14",
+    "slimerjs": "^0.10.3"
   },
   "devDependencies": {
     "casperjs": "^1.1.3",
     "phantomjs-prebuilt": "^2.1.14"
   },
   "scripts": {
-    "scene_020_010_010": "node_modules/casperjs/bin/casperjs test scenario/020/010/010.js",
+    "scene_020_010_010": "node_modules/casperjs/bin/casperjs test --includes=src/inc.js --pre=./src/pre.js scenario/020/010/010.js",
+    "lib": "node_modules/casperjs/bin/casperjs test src/lib.js --engine=slimerjs --remote-debugger-autorun=yes --remote-debugger-port=9000",
     "ph": "$NODE_DEBUG_OPTION node_modules/.bin/phantomjs scenario/020/010/020.js"
   },
   "author": "Alex Gusev <alex@flancer64.com>",

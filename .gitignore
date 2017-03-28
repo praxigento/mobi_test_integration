@@ -1,4 +1,6 @@
 /.idea/
-/atlassian-ide-plugin.xml
+/etc/cfg.json
 /node_modules/
+/var/tmp/
+/atlassian-ide-plugin.xml
 /npm-debug.log
