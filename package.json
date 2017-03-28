@@ -1,0 +1,33 @@
+{
+  "name": "mobi-test-integration",
+  "version": "1.0.0",
+  "description": "Integration test scenarios for MOBI app.",
+  "main": "index.js",
+  "dependencies": {
+    "lg-autoplay": "^1.0.1",
+    "lg-fullscreen": "^1.0.1",
+    "lg-hash": "^1.0.1",
+    "lg-pager": "^1.0.1",
+    "lg-share": "^1.0.2",
+    "lg-thumbnail": "^1.0.1",
+    "lg-video": "^1.0.1",
+    "lg-zoom": "^1.0.4",
+    "lightgallery": "^1.3.7",
+    "object-path": "^0.11.3",
+    "phantomjs-prebuilt": "^2.1.14"
+  },
+  "devDependencies": {
+    "casperjs": "^1.1.3",
+    "phantomjs-prebuilt": "^2.1.14"
+  },
+  "scripts": {
+    "scene_020_010_010": "node_modules/casperjs/bin/casperjs test scenario/020/010/010.js",
+    "ph": "$NODE_DEBUG_OPTION node_modules/.bin/phantomjs scenario/020/010/020.js"
+  },
+  "author": "Alex Gusev <alex@flancer64.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/praxigento/mobi_test_integration"
+  }
+}
