@@ -1,12 +1,10 @@
-"use strict"
+// "use strict"
 
-var fnStart = function () {
-    var casper = global.casper
-    var mobi = global.mobi
+var fnStart = function (mobi) {
+    var casper = mobi.casper
     casper.start().then(function () {
         mobi.test.setViewPort();
     });
 }
-
 
 module.exports = fnStart

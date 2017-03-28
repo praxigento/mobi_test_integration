@@ -22,9 +22,8 @@
     "phantomjs-prebuilt": "^2.1.14"
   },
   "scripts": {
-    "scene_020_010_010": "node_modules/casperjs/bin/casperjs test --includes=src/inc.js --pre=./src/pre.js scenario/020/010/010.js",
-    "lib": "node_modules/casperjs/bin/casperjs test src/lib.js --engine=slimerjs --remote-debugger-autorun=yes --remote-debugger-port=9000",
-    "ph": "$NODE_DEBUG_OPTION node_modules/.bin/phantomjs scenario/020/010/020.js"
+    "lib": "node_modules/casperjs/bin/casperjs test src/lib.js --engine=slimerjs --includes=./src/inc.js",
+    "scene_020_010_010": "node_modules/casperjs/bin/casperjs test --engine=slimerjs --verbose --log-level=debug --includes=src/inc.js --pre=./src/pre.js scenario/020/010/010.js"
   },
   "author": "Alex Gusev <alex@flancer64.com>",
   "license": "MIT",
