@@ -12,6 +12,8 @@ var viewport = util.objPath.get(cfg, "viewport")
 util.objPath.set(test, "test.cfg.viewport", viewport)
 
 
+
+
 /* compose result */
 module.exports = {
     mage: mage,

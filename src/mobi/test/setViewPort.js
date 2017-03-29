@@ -4,9 +4,9 @@
 "use strict"
 
 var fn = function setViewport() {
-
-    var dimensions = mobi.test.cfg.viewport;
-    casper.page.viewportSize = dimensions;
+    var mobi = getTestContext()
+    var dimensions = mobi.test.cfg.viewport
+    mobi.casper.page.viewportSize = dimensions
 };
 
 module.exports = fn
