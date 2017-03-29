@@ -4,5 +4,6 @@
  */
 
 module.exports = {
-    auth: require("./auth/index")
+    auth: require("./auth/index"),
+    getUrl: require("./getUrl")
 }

@@ -1,4 +1,5 @@
 /.idea/
+/etc/cfg.js
 /etc/cfg.json
 /node_modules/
 /var/tmp/
