@@ -1,10 +1,12 @@
 "use strict"
 
-var fnRun = function mobiTestRun(test) {
-    var casper = casper
+var fn = function (test) {
+    var mobi = getTestContext()
+    var casper = mobi.casper
+
     casper.run(function () {
         test.done()
     })
 }
 
-module.exports = fnRun
+module.exports = fn

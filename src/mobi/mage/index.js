@@ -4,6 +4,6 @@
  */
 
 module.exports = {
-    admin: {},
+    admin: require("./admin/index"),
     front: require("./front/index")
 }

@@ -4,6 +4,7 @@
  */
 var cfg = require("../../etc/cfg.js")
 var mage = require("./mage/index")
+var odoo = require("./odoo/index")
 var test = require("./test/index")
 var util = require("./util/index")
 
@@ -16,10 +17,8 @@ var util = require("./util/index")
  * @param {string} pathTo
  */
 var map = function (objFrom, pathFrom, objTo, pathTo) {
-    console.log("BEFORE: " + JSON.stringify(objFrom))
     var item = util.objPath.get(objFrom, pathFrom)
     util.objPath.set(objTo, pathTo, item)
-    console.log("AFTER: " + JSON.stringify(objTo))
 }
 
 /* map local configuration into the MOBI objects */
@@ -29,11 +28,11 @@ map(cfg, "url.mage.api", test, "cfg.url.mage.api")
 map(cfg, "url.odoo.web", test, "cfg.url.odoo.web")
 map(cfg, "viewport", test, "cfg.viewport")
 
-console.log("STRUCT: " + JSON.stringify(test))
 
 /* compose result */
 module.exports = {
     mage: mage,
+    odoo: odoo,
     test: test,
     util: util
 }
