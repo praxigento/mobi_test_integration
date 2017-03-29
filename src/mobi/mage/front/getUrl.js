@@ -5,7 +5,7 @@
  *
  * @param {string} path path to Magento page (absolute path started with '/', alias - w/o)
  */
-var result = function getUrl(path) {
+var fn = function getUrl(path) {
     /* shortcuts for working variables */
     var mobi = getTestContext()
     var casper = mobi.casper
@@ -27,4 +27,4 @@ var result = function getUrl(path) {
     return result
 }
 
-module.exports = result
+module.exports = fn

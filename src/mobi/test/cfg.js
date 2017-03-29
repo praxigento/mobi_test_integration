@@ -13,5 +13,14 @@ module.exports = {
             web: "set value in './etc/cfg.js:odoo.web'"
         }
     },
+    mage: {
+        front: {
+            mode: {
+                currency: "USD",
+                lang: "EN",
+                store: "default"
+            }
+        }
+    },
     viewport: {"width": 1024, "height": 768} // browser dimensions (can be overridden in './etc/cfg.json')
 }

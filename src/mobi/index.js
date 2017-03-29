@@ -26,6 +26,9 @@ map(cfg, "url.mage.admin", test, "cfg.url.mage.admin")
 map(cfg, "url.mage.front", test, "cfg.url.mage.front")
 map(cfg, "url.mage.api", test, "cfg.url.mage.api")
 map(cfg, "url.odoo.web", test, "cfg.url.odoo.web")
+map(cfg, "mage.front.mode.currency", test, "cfg.mage.front.mode.currency")
+map(cfg, "mage.front.mode.lang", test, "cfg.mage.front.mode.lang")
+map(cfg, "mage.front.mode.store", test, "cfg.mage.front.mode.store")
 map(cfg, "viewport", test, "cfg.viewport")
 
 

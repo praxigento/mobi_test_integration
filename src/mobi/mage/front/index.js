@@ -5,5 +5,6 @@
 
 module.exports = {
     auth: require("./auth/index"),
+    mode: require("./mode/index"),
     getUrl: require("./getUrl")
 }
