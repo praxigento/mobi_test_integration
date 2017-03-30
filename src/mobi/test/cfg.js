@@ -17,8 +17,7 @@ module.exports = {
         front: {
             mode: {
                 currency: "USD",
-                lang: "EN",
-                store: "default"
+                storeView: "default"
             }
         }
     },

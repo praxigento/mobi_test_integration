@@ -6,6 +6,5 @@
 module.exports = {
     all: require("./all"),
     currency: require("./currency"),
-    lang: require("./lang"),
-    store: require("./store"),
+    storeView: require("./storeView"),
 }

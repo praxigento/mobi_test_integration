@@ -9,6 +9,10 @@
 
     /* start scenario  */
 
+    /* switch to the second lang & store view (from available) */
+    var currency = mobi.cfg.mage.front.mode.currencies[1]
+    var storeView = mobi.cfg.mage.front.mode.storeViews[1]
+
     casper.test.begin(desc, 3, function suite(test) {
 
         mobi.test.start(mobi)
@@ -19,8 +23,25 @@
 
         })
 
+        /* setup front mode (store view & language) */
         casper.then(function (resp) {
-            mobi.mage.front.mode.switch.all()
+            mobi.mage.front.mode.switch.all({
+                currency: currency,
+                storeView: storeView
+            })
+        })
+
+        /* after page reload test result */
+        casper.then(function (resp) {
+            var cssPath = "#switcher-currency-trigger > strong.language-" + currency
+            test.assertExists(cssPath, "Selected currency is applied.")
+            var storeViewActual;
+            casper.page.cookies.forEach(function (item) {
+                if (item.name == 'store') {
+                    storeViewActual = item.value
+                }
+            })
+            test.assertEquals(storeViewActual, storeView, "Selected store view is applied.")
         })
 
 

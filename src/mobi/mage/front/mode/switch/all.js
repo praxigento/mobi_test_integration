@@ -4,8 +4,7 @@
  *
  * @param {object} opts
  * @param {string} opts.currency
- * @param {string} opts.lang
- * @param {string} opts.store
+ * @param {string} opts.storeView
  */
 var fn = function (opts) {
     /* shortcuts for working variables */
@@ -16,13 +15,14 @@ var fn = function (opts) {
     /* parse input opts */
     var opts = opts || {}
     opts.currency = opts.currency || objPath.get(mobi.test.cfg, "mage.front.mode.currency")
-    opts.lang = opts.lang || objPath.get(mobi.test.cfg, "mage.front.mode.lang")
-    opts.store = opts.store || objPath.get(mobi.test.cfg, "mage.front.mode.store")
+    opts.storeView = opts.storeView || objPath.get(mobi.test.cfg, "mage.front.mode.storeView")
+    opts.skipPageReload = true  // don't reload page in store view switcher
 
     /* perform action */
-    // mobi.mage.front.mode.switch.currency(opts)
-    // mobi.mage.front.mode.switch.lang(opts)
-    mobi.mage.front.mode.switch.store(opts)
+    /* firstly change store view (cookie) */
+    mobi.mage.front.mode.switch.storeView(opts)
+    /* currency switcher always reloads page (POST request) */
+    mobi.mage.front.mode.switch.currency(opts)
 }
 
 module.exports = fn

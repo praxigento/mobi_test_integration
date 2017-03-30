@@ -9,7 +9,7 @@ var result = function getUrl(path) {
     /* shortcuts for working variables */
     var mobi = getTestContext()
     var casper = mobi.casper
-    var baseUrl = mobi.test.cfg.url.mage.front
+    var baseUrl = mobi.test.cfg.url.odoo.web
 
     /* functionality */
     casper.echo("  construct Magento Front URL for path '" + path + "'.", "PARAMETER")
