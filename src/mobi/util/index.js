@@ -4,5 +4,5 @@
  */
 
 module.exports = {
-    objPath: require('/home/alex/work/prj/mobi_test_integration/node_modules/object-path/index.js') // see https://github.com/mariocasciaro/object-path
+    objPath: require("../../../node_modules/object-path/index") // see https://github.com/mariocasciaro/object-path
 }
