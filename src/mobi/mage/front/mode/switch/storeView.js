@@ -19,7 +19,7 @@ var fn = function (opts) {
     /* perform action */
     var doReload = !opts.skipPageReload
     var storeViewCode = opts.storeView
-    casper.echo("We need to switch to store view: " + storeViewCode)
+    casper.echo("  switch to store view: " + storeViewCode, "PARAMETER")
 
     /* setup 'store' cookie with store view code */
     casper.page.addCookie({

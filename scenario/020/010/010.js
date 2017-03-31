@@ -13,14 +13,28 @@
         /* start test scenario definition */
         mobi.test.start()
 
+        /* clean up authentication and referral cookies */
+        mobi.mage.front.auth.anon()
+        /* switch sore to default mode */
+        mobi.mage.front.mode.switch.all()
+
         /* open catalog URL */
-        var url = mobi.mage.front.getUrl('/')
-        casper.thenOpen('http://san.mage.test.prxgt.com/', function () {
-            test.assertTrue(true, 'Homepage is loaded.');
+        var url = mobi.mage.front.getUrl(mobi.test.cfg.url.mage.front.aliases.catalog)
+        casper.thenOpen(url, function () {
+            test.assertTrue(true, "Catalog is loaded.");
         });
 
-        casper.run();
+        casper.then(function (resp) {
+            /* switch sore to default mode */
+            mobi.mage.front.mode.switch.all()
+        })
 
+        casper.then(function (resp) {
+            casper.wait(3000)
+        })
+
+        /* launch defined test scenario */
+        mobi.test.run(test)
     });
 
 })(mobi)

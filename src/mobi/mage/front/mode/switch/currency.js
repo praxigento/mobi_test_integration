@@ -17,7 +17,7 @@ var fn = function (opts) {
 
     /* perform action */
     var currency = opts.currency
-    casper.echo("We need to switch to currency: " + currency)
+    casper.echo("  switch to currency: " + currency, "PARAMETER")
 
     /* get data to post switch currency form */
     var uenc = casper.fetchText("input[name=uenc]")
