@@ -22,10 +22,19 @@ var map = function (objFrom, pathFrom, objTo, pathTo) {
 }
 
 /* map local configuration into the MOBI objects */
-map(cfg, "url.mage.admin", test, "cfg.url.mage.admin")
-map(cfg, "url.mage.front", test, "cfg.url.mage.front")
-map(cfg, "url.mage.api", test, "cfg.url.mage.api")
-map(cfg, "url.odoo.web", test, "cfg.url.odoo.web")
+/* base URLs */
+map(cfg, "url.mage.admin.base", test, "cfg.url.mage.admin.base")
+map(cfg, "url.mage.front.base", test, "cfg.url.mage.front.base")
+map(cfg, "url.mage.api.base", test, "cfg.url.mage.api.base")
+map(cfg, "url.odoo.web.base", test, "cfg.url.odoo.web.base")
+
+/* ... and aliases (TODO: should be merged with default values from 'test') */
+map(cfg, "url.mage.admin.aliases", test, "cfg.url.mage.admin.aliases")
+map(cfg, "url.mage.front.aliases", test, "cfg.url.mage.front.aliases")
+map(cfg, "url.mage.api.aliases", test, "cfg.url.mage.api.aliases")
+map(cfg, "url.odoo.web.aliases", test, "cfg.url.odoo.web.aliases")
+
+/* defaults */
 map(cfg, "mage.front.mode.def.currency", test, "cfg.mage.front.mode.currency")
 map(cfg, "mage.front.mode.def.storeView", test, "cfg.mage.front.mode.storeView")
 map(cfg, "viewport", test, "cfg.viewport")

@@ -4,13 +4,25 @@
  */
 module.exports = {
     url: {
-        mage: {
-            admin: "set value in './etc/cfg.js:url.mage.admin'",
-            front: "set value in './etc/cfg.js:url.mage.front'",
-            api: "set value in './etc/cfg.js:url.mage.api'",
+        mage: { // "set value in './etc/cfg.js:url.mage.*'"
+            admin: {
+                base: "[confugured]",
+                aliases: {}
+            },
+            api: {
+                base: "[confugured]",
+                aliases: {}
+            },
+            front: {
+                base: "[confugured]",
+                aliases: {}
+            }
         },
-        odoo: {
-            web: "set value in './etc/cfg.js:odoo.web'"
+        odoo: { // "set value in './etc/cfg.js:odoo.web.*'"
+            web: {
+                base: "[confugured]",
+                aliases: {}
+            }
         }
     },
     mage: {

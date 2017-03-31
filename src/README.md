@@ -6,9 +6,9 @@ https://gist.github.com/n1k0/3813361
 $ casperjs test tests/ --pre=pre.js --includes=inc.js --post=post.js
 ```
 * **mobi/**: MOBI related staff (functions, objects), is placed into the 'global'; 
-* **pre.js**: before whole suite;
+* **inc.js**: before each test in suite;
 * **post.js**: after whole suite;
-* **include.js**: before each test in suite;
+* **pre.js**: before whole suite;
 
 ```bash
 Test file: /Users/nperriault/tmp/pre-inc/pre.js                                 

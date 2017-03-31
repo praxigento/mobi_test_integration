@@ -2,13 +2,14 @@
 /**
  * Clean up referral cookies for anonymous visitors.
  */
-var result = function mageFrontAuthAnon() {
-    // shortcut globals
-    var casper = casper
+var fn = function mageFrontAuthAnon() {
+    /* shortcuts for working variables */
+    var mobi = getTestContext()
+    var casper = mobi.casper
 
-    // function itself
+    /* functionality */
     casper.page.deleteCookie("PHPSESSID")           // clean up session cookie
     casper.page.deleteCookie("prxgtDwnlReferral")   // \Praxigento\Downline\Tool\Def\Referral::COOKIE_REFERRAL_CODE
 }
 
-module.exports = result
+module.exports = fn

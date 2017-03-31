@@ -21,3 +21,9 @@ $ npm test
 $ npm run-script test-phantom
 $ npm run-script test-slimer
 ```
+
+## Project structure
+
+* **./etc/**: local configuration (URLs. accounts, etc.);
+* **./scenario/**: test scenarios;
+* **./src/**: functions and data structures are used in test scenarios;
