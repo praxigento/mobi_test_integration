@@ -19,15 +19,11 @@
         mobi.mage.front.mode.switch.all()
 
         /* open catalog URL */
-        var url = mobi.mage.front.getUrl(mobi.test.cfg.url.mage.front.aliases.catalog)
+        var url = mobi.mage.front.getUrl(mobi.test.cfg.url.mage.front.aliases.prod1)
         casper.thenOpen(url, function () {
-            test.assertTrue(true, "Catalog is loaded.");
+            test.assertTrue(true, "Product page is loaded.");
         });
 
-        casper.then(function (resp) {
-            /* switch sore to default mode */
-            mobi.mage.front.mode.switch.all()
-        })
 
         casper.then(function (resp) {
             casper.wait(3000)

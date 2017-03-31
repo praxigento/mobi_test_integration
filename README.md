@@ -1,5 +1,9 @@
 # Integration tests for MOBI projects
 
+## Configuration 
+
+Setup local configuration in `./etc/cfg.js` (see `./etc/cfg.init.js`).
+
 ## Run tests
 
 Run one test script directly:
