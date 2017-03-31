@@ -8,8 +8,17 @@ var fn = function mageFrontAuthAnon() {
     var casper = mobi.casper
 
     /* functionality */
-    casper.page.deleteCookie("PHPSESSID")           // clean up session cookie
-    casper.page.deleteCookie("prxgtDwnlReferral")   // \Praxigento\Downline\Tool\Def\Referral::COOKIE_REFERRAL_CODE
+
+    casper.then(function () {
+        // casper.page.deleteCookie("PHPSESSID")           // clean up session cookie
+        // casper.page.deleteCookie("prxgtDwnlReferral")   // \Praxigento\Downline\Tool\Def\Referral::COOKIE_REFERRAL_CODE
+        var cookies = casper.page.cookies
+        cookies.forEach(function (item) {
+            casper.page.deleteCookie(item.name)
+            casper.echo("Coockie '" + item.name + "' is deleted.")
+        })
+    })
+
 }
 
 module.exports = fn

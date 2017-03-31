@@ -28,5 +28,8 @@ if (typeof require.globals === 'object') {
 mobi = require(dir + "/src/mobi/index")
 mobi.casper = casper
 
+/* set default timeout for casper */
+casper.options.waitTimeout = 20 * 1000;
+
 /* 'done()' is required for 'pre' function */
 casper.test.done()
