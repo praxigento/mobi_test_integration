@@ -11,7 +11,7 @@ DIR_ROOT="$( cd "$( dirname "$0" )" && pwd )"
 echo ""
 echo "Go to the root folder and run all tests"
 cd ${DIR_ROOT}/
-/usr/bin/npm test
+/usr/bin/npm test > ${DIR_ROOT}/htdocs/log.txt
 
 # Finalize job
 echo ""
