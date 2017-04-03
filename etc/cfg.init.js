@@ -5,7 +5,7 @@
  *
  * Configuration values are mapped to working data tree in 'src/mobi/index.js'.
  *
- * TODO: split project spesific configuration and instance specific.
+ * TODO: split project specific configuration and instance specific.
  */
 module.exports = {
     url: {
