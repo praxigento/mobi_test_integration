@@ -29,5 +29,6 @@ $ npm run-script test-slimer
 ## Project structure
 
 * **./etc/**: local configuration (URLs. accounts, etc.);
+* **./htdocs/**: root folder for accessing testing result using web;
 * **./scenario/**: test scenarios;
 * **./src/**: functions and data structures are used in test scenarios;

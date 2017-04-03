@@ -1,6 +1,6 @@
 /.idea/
 /etc/cfg.js
-/etc/cfg.json
+/htdocs/xunit.xml
 /node_modules/
 /var/tmp/
 /atlassian-ide-plugin.xml
