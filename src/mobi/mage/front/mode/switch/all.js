@@ -20,26 +20,30 @@ var fn = function (opts) {
 
     /* perform action */
 
-    /* TODO: too many reloads on language switching. We need to check current language before switching */
+    casper.then(function () {
 
-    /* load home page or save current URL to return to */
-    var url = casper.page.url
-    casper.echo("  current URL loaded: '" + url + "'.", "PARAMETER")
-    /* check loaded page and load home page if no page were loaded */
-    if (!url) {
-        var homePage = mobi.mage.front.getUrl('/')
-        casper.thenOpen(homePage)
-    }
+        /* TODO: too many reloads on language switching. We need to check current language before switching */
 
-    /* firstly change store view (cookie) */
-    mobi.mage.front.mode.switch.storeView(opts)
-    /* currency switcher always reloads page (POST request) */
-    mobi.mage.front.mode.switch.currency(opts)
+        /* load home page or save current URL to return to */
+        var url = casper.page.url
+        /* check loaded page and load home page if no page were loaded */
+        if (!url) {
+            casper.echo("  no loaded page is found, load home page.", "PARAMETER")
+            var homePage = mobi.mage.front.getUrl('/')
+            casper.thenOpen(homePage)
+        }
+        casper.echo("  current URL loaded: '" + url + "'.", "PARAMETER")
 
-    /* return to the original page */
-    if (url) {
-        casper.thenOpen(url)
-    }
+        /* firstly change store view (cookie) */
+        mobi.mage.front.mode.switch.storeView(opts)
+        /* currency switcher always reloads page (POST request) */
+        mobi.mage.front.mode.switch.currency(opts)
+
+        /* return to the original page */
+        if (url) {
+            casper.thenOpen(url)
+        }
+    })
 }
 
 module.exports = fn

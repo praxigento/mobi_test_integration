@@ -9,36 +9,35 @@
 
 
     /* start scenario  */
-    casper.test.begin(desc, 4, function (test) {
+    casper.test.begin(desc, function (test) {
+        /* pin 'test' to local scope */
+        var test = test
         /* start test scenario definition */
         mobi.test.start()
 
         /* clean up authentication and referral cookies */
         mobi.mage.front.auth.anon()
-        /* switch sore to default mode */
+        /* switch store & currency to defaults */
         mobi.mage.front.mode.switch.all()
 
-        /* open catalog URL */
+        /* open catalog URL & switch sore to default mode */
         var url = mobi.mage.front.getUrl(mobi.test.cfg.url.mage.front.aliases.prod1)
         casper.thenOpen(url, function (resp) {
             test.assertTrue((resp.status >= 200) && (resp.status < 400), "Product page is loaded.");
         });
 
+
         /** "Add to Cart" button is clicked */
         casper.then(function () {
-            casper.waitForSelector("#product-addtocart-button", function (resp) {
+            casper.waitForSelector("#product_addtocart_form", function (resp) {
                 casper.fillSelectors("#product_addtocart_form", {
-                    "#qty": 10
+                    "#qty": 2
                 }, false)
                 casper.click("#product-addtocart-button > span")
                 test.assert(true, "'Add to Cart' button is clicked.")
-            })
-        })
-
-
-        casper.then(function () {
-            casper.waitForSelector("div[data-ui-id=message-success]", function () {
-                test.assert(true, "Product is added to the shopping cart.")
+                casper.waitForSelector("div[data-ui-id=message-success]", function () {
+                    test.assert(true, "Product is added to the shopping cart.")
+                })
             })
         })
 
@@ -46,7 +45,12 @@
         url = mobi.mage.front.getUrl("/checkout/")
         casper.thenOpen(url, function (resp) {
             test.assertTrue((resp.status >= 200) && (resp.status < 400), "Checkout 'Shipping' step is loaded.")
+        })
 
+        casper.then(function () {
+            casper.waitForSelector("#label_method_flatrate_flatrate", function () {
+                casper.echo("... shipping method is loaded.")
+            })
         })
 
         /* Fill in "email" field and wait until email will be checked */
@@ -61,48 +65,122 @@
             })
         })
 
-        // casper.then(function () {
-        //     casper.waitForSelector("input[name=telephone]", function () {
-        //         casper.fillSelectors("#co-shipping-form", {
-        //             "input[name=firstname]": "address.nameFirst",
-        //             "input[name=lastname]": "address.nameLast",
-        //             "input[name=company]": "address.company",
-        //             "input[name='street[0]']": "address.street",
-        //             "input[name=city]": "address.city",
-        //             "input[name=postcode]": "1010",
-        //             "input[name=telephone]": "1234567890",
-        //             "select[name=country_id]": "LV"
-        //         }, false)
-        //         casper.echo("... checkout address is filled (w/o state/province).")
-        //     })
-        // })
-
-        // casper.then(function () {
-        //     casper.waitForSelector("select[name=region_id]", function () {
-        //         casper.fillSelectors("#co-shipping-form", {
-        //             "select[name=region_id]": "471"
-        //         }, false)
-        //         casper.echo("... state/province field is filled.")
-        //     })
-        // })
-
-        // var css = "button[data-role=opc-continue]"
-        // casper.waitForSelector(css, function then() {
-        //     test.assertSelectorHasText(css, "Next", "... 'Next' button is appeared.")
-        //     casper.capture("capture-next.jpg");
-        // }, function onTimeout() {
-        //     casper.capture("capture.jpg");
-        // })
-
-        casper.then(function (resp) {
-            casper.wait(5000)
+        casper.then(function () {
+            casper.waitForSelector("input[name=telephone]", function () {
+                casper.fillSelectors("#co-shipping-form", {
+                    "input[name=firstname]": "address.nameFirst",
+                    "input[name=lastname]": "address.nameLast",
+                    "input[name=company]": "address.company",
+                    "input[name='street[0]']": "address.street",
+                    "input[name=city]": "address.city",
+                    "input[name=postcode]": "1010",
+                    "input[name=telephone]": "1234567890",
+                    "select[name=country_id]": "LV"
+                }, false)
+                casper.echo("... checkout address is filled (w/o state/province).")
+            })
         })
 
+        casper.then(function () {
+            casper.waitForSelector("select[name=region_id]", function () {
+                casper.fillSelectors("#co-shipping-form", {
+                    "select[name=region_id]": "471"
+                }, false)
+                casper.echo("... state/province field is filled.")
+            })
+        })
+
+
+        // CSS selectors for checkout page
+        var cssRadio = "div.payment-method.payment-method-braintree > div.payment-method-title.field.choice > label > span"
+
+        casper.then(function (resp) {
+            var css = "button[data-role=opc-continue]"
+            casper.waitForSelector(css, function then() {
+                test.assertSelectorHasText(css, "Next", "... 'Next' button is appeared.")
+                casper.click(css)
+                test.assert(true, "'Next' button is clicked.")
+                casper.waitFor(function check() {
+                    var result = casper.visible(cssRadio)
+                    return result
+                }, function then() {
+                    test.assert(casper.visible(cssRadio), '... payment step is loaded')
+                })
+            })
+        })
+
+        /**
+         * Checkout Payment
+         */
+        {
+            casper.then(function (resp) {
+                /** Credit card payment method is selected */
+                casper.waitForSelector(cssRadio, function () {
+                    casper.click(cssRadio)
+                    test.assert(true, "Credit card payment method is selected.")
+                })
+
+                /** Payment data is filled in */
+                casper.waitWhileVisible("body > div.loading-mask", function () {
+                    // wait until braintree form will be loaded
+                    /* switch to the child frames one by one and fill braintree payment form fields */
+                    /* (each field on the separate iframe) */
+                    casper.waitForSelector("iframe#braintree-hosted-field-number", function () {
+
+                        /** ... credit card number is filled */
+                        var page = casper.page
+                        page.switchToChildFrame("braintree-hosted-field-number")
+                        casper.waitForSelector("input#credit-card-number", function () {
+                            casper.fillSelectors("body", {"input#credit-card-number": "4111111111111111"}, false)
+                            test.assert(true, "... credit card number is filled")
+                            page.switchToParentFrame()
+                            /** ... expiration month is filled */
+                            page.switchToChildFrame("braintree-hosted-field-expirationMonth")
+                            casper.waitForSelector('input#expiration-month', function () {
+                                casper.fillSelectors('body', {'input#expiration-month': '12'}, false)
+                                test.assert(true, "... expiration month is filled")
+                                page.switchToParentFrame()
+
+                                /** ... expiration year is filled */
+                                // page.switchToChildFrame('braintree-hosted-field-expirationYear')
+                                // casper.waitForSelector('input#expiration-year', function () {
+                                //     casper.fillSelectors('body', {'input#expiration-year': '21'}, false)
+                                //     test.assert(true, "... expiration year is filled")
+                                //     page.switchToParentFrame()
+                                //
+                                //     /** ... CVV code is filled */
+                                //     page.switchToChildFrame('braintree-hosted-field-cvv')
+                                //     casper.waitForSelector('input#cvv', function () {
+                                //         casper.fillSelectors('body', {'input#cvv': '321'}, false)
+                                //         test.assert(true, "... CVV code is filled")
+                                //         page.switchToParentFrame()
+                                //     })
+                                // })
+                            })
+                        })
+                    })
+
+                })
+
+            })
+
+            // /** "Place Order" button is clicked */
+            // casper.then(function () {
+            //     casper.waitForSelector('#checkout-payment-method-load', function () {
+            //         var css = "#checkout-payment-method-load > div > div > div.payment-method._active > div.payment-method-content > div.actions-toolbar > div > button > span"
+            //         subTest.capture(optsCapture)
+            //         casper.click(css)
+            //         test.assert(true, '"Place Order" button is clicked.')
+            //     })
+            // })
+
+
+        }
+
+        /* launch defined test scenario */
         casper.then(function (resp) {
             casper.capture("screenshot.jpg")
         })
-
-        /* launch defined test scenario */
         mobi.test.run(test)
     });
 

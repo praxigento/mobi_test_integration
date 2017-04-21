@@ -24,7 +24,8 @@ var fn = function (opts) {
     var formKey = casper.fetchText("input[name=form_key]")
     var url = mobi.mage.front.getUrl("/directory/currency/switch/")
 
-    casper.open(url, {
+    /* post request to switch currency */
+    casper.thenOpen(url, {
         method: "post",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -34,7 +35,11 @@ var fn = function (opts) {
             "uenc": uenc,
             "form_key": formKey
         }
+    }, function () {
+        /* MOBI-676: reload page after POST-request */
+        casper.reload()
     })
+
 
 }
 

@@ -15,7 +15,7 @@ var fn = function mageFrontAuthAnon() {
         var cookies = casper.page.cookies
         cookies.forEach(function (item) {
             casper.page.deleteCookie(item.name)
-            casper.echo("Coockie '" + item.name + "' is deleted.")
+            casper.echo("Cookie '" + item.name + "' is deleted.")
         })
     })
 
