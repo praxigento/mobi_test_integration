@@ -201,7 +201,7 @@
          * Go to GMail and extract sign up link.
          */
         {
-            // casper.wait(5000) // MOBI-595 TODO: remove "email in the road" delay and add Refresh for the Inbox page
+            casper.wait(5000) // MOBI-595 TODO: remove "email in the road" delay and add Refresh for the Inbox page
 
             // /** Gmail login form is loaded */
             // casper.then(function () {
