@@ -142,20 +142,20 @@
                                 page.switchToParentFrame()
 
                                 /** ... expiration year is filled */
-                                // page.switchToChildFrame('braintree-hosted-field-expirationYear')
-                                // casper.waitForSelector('input#expiration-year', function () {
-                                //     casper.fillSelectors('body', {'input#expiration-year': '21'}, false)
-                                //     test.assert(true, "... expiration year is filled")
-                                //     page.switchToParentFrame()
-                                //
-                                //     /** ... CVV code is filled */
-                                //     page.switchToChildFrame('braintree-hosted-field-cvv')
-                                //     casper.waitForSelector('input#cvv', function () {
-                                //         casper.fillSelectors('body', {'input#cvv': '321'}, false)
-                                //         test.assert(true, "... CVV code is filled")
-                                //         page.switchToParentFrame()
-                                //     })
-                                // })
+                                page.switchToChildFrame('braintree-hosted-field-expirationYear')
+                                casper.waitForSelector('input#expiration-year', function () {
+                                    casper.fillSelectors('body', {'input#expiration-year': '21'}, false)
+                                    test.assert(true, "... expiration year is filled")
+                                    page.switchToParentFrame()
+
+                                    /** ... CVV code is filled */
+                                    page.switchToChildFrame('braintree-hosted-field-cvv')
+                                    casper.waitForSelector('input#cvv', function () {
+                                        casper.fillSelectors('body', {'input#cvv': '321'}, false)
+                                        test.assert(true, "... CVV code is filled")
+                                        page.switchToParentFrame()
+                                    })
+                                })
                             })
                         })
                     })
@@ -164,18 +164,82 @@
 
             })
 
-            // /** "Place Order" button is clicked */
+            /** Click on "Place Order" button */
+            casper.then(function () {
+                casper.waitForSelector('#checkout-payment-method-load', function () {
+                    var css = "#checkout-payment-method-load > div > div > div.payment-method._active > div.payment-method-content > div.actions-toolbar > div > button > span"
+                    casper.click(css)
+                    test.assert(true, '"Place Order" button is clicked.')
+                })
+            })
+
+            /** Order placement is completed */
+            casper.then(function () {
+                casper.waitForSelector('.checkout-success', function () {
+                    test.assert(true, 'Order placement is completed.')
+                }, null, 30000)
+            })
+        }
+
+        /**
+         * Create an Account in Magento
+         */
+        {
+            /** "Create an Account" button is clicked */
+            casper.then(function () {
+                var cssBtnCreate = "input[type=submit]"
+                casper.waitForSelector(cssBtnCreate, function () {
+                    test.assert(true, '... "Create an Account" button is visible.')
+                    casper.click(cssBtnCreate)
+                    test.assert(true, '"Create an Account" button is clicked.')
+                })
+            })
+        }
+
+
+        /**
+         * Go to GMail and extract sign up link.
+         */
+        {
+            // casper.wait(5000) // MOBI-595 TODO: remove "email in the road" delay and add Refresh for the Inbox page
+
+            // /** Gmail login form is loaded */
             // casper.then(function () {
-            //     casper.waitForSelector('#checkout-payment-method-load', function () {
-            //         var css = "#checkout-payment-method-load > div > div > div.payment-method._active > div.payment-method-content > div.actions-toolbar > div > button > span"
-            //         subTest.capture(optsCapture)
-            //         casper.click(css)
-            //         test.assert(true, '"Place Order" button is clicked.')
+            //     var url = "https://mail.google.com/mail/u/0/h/1pq68r75kzvdr/?v%3Dlui"
+            //     casper.open(url).then(function () {
+            //         var cssBtnNext = "input#next"
+            //         casper.waitForSelector(cssBtnNext, function () {
+            //             test.assert(true, 'Gmail login form is loaded.')
+            //             casper.fillSelectors("#identifier-shown", {
+            //                 "#Email": authGmailCustomer.email
+            //             }, false)
+            //             casper.click(cssBtnNext, "50%", "50%")
+            //
+            //             /** fill in passwd */
+            //             var cssFldPasswd = '#Passwd'
+            //             casper.waitFor(function check() {
+            //                 var result = casper.visible(cssFldPasswd)
+            //                 return result
+            //             }, function then() {
+            //                 casper.fillSelectors("#password-shown", {
+            //                     "#Passwd": authGmailCustomer.password
+            //                 }, false)
+            //                 casper.click(cssBtnNext, "50%", "50%")
+            //             })
+            //         })
             //     })
             // })
-
-
+            //
+            // /** User is logged into Gmail. */
+            // casper.then(function () {
+            //     var cssEmail = "#guser > nobr > b"
+            //     casper.waitForSelector(cssEmail, function () {
+            //         var email = casper.fetchText(cssEmail)
+            //         test.assertEquals(email, authGmailCustomer.email, "User is logged into Gmail.")
+            //     })
+            // })
         }
+
 
         /* launch defined test scenario */
         casper.then(function (resp) {
