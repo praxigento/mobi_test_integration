@@ -3,6 +3,7 @@
  * Get local configuration (URLs, passwords, etc.)
  */
 var cfg = require("../../etc/cfg.js")
+var gmail = require("./gmail/index")
 var mage = require("./mage/index")
 var odoo = require("./odoo/index")
 var test = require("./test/index")
@@ -43,6 +44,7 @@ map(cfg, "viewport", test, "cfg.viewport")
 /* compose result */
 module.exports = {
     cfg: cfg,
+    gmail: gmail,
     mage: mage,
     odoo: odoo,
     test: test,

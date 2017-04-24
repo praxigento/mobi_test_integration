@@ -8,7 +8,7 @@
     var card = mobi.cfg.payment.card.braintree;
 
     /* setup this module environment */
-    var desc = "Anonymous Sign Up: scene 01"
+    var desc = "Anonymous Sign Up / scene 01: create sale order as guest."
 
 
     /* start test scene  */
