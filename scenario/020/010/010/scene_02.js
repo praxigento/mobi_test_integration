@@ -53,7 +53,7 @@
                         casper.fillSelectors("#password-shown", {
                             "#Passwd": accAnon.gmail.password
                         }, false)
-                        var cssBtnSignIn= "input#signIn"
+                        var cssBtnSignIn = "input#signIn"
                         casper.click(cssBtnSignIn, "50%", "50%")
                     })
                 })
@@ -70,19 +70,47 @@
         }
 
         /**
-         * Go to Inbox and find sign up email.
+         * Go to Inbox and find first sign up email.
          */
         {
-            /* Signup email is found */
+            /* Sign Up email is found */
             casper.then(function () {
-                var cssItem = "body > table:nth-child(16) > tbody > tr > td:nth-child(2) > table:nth-child(1) > tbody > tr > td:nth-child(2) > form > table.th > tbody > tr:nth-child(1) > td:nth-child(3) > a "
-                casper.waitForSelector(cssItem, function () {
-                    var subject = casper.fetchText(cssItem)
-                    var isSignupEmail = (subject.indexOf("Welcome to MOBI Test Store") !== -1)
-                    casper.click(cssItem)
-                    test.assert(true, "Signup email is found.")
+                var cssInboxItems = "table.th"
+                casper.waitForSelector(cssInboxItems, function () {
+                    /* get all Inbox items from the first page  */
+                    var elements = casper.getElementsInfo(cssInboxItems + " tr td a");
+                    var href
+                    elements.forEach(function (element) {
+                        /* save first link to Sign Up email */
+                        var text = element.text
+                        var isSignupEmail = (text.indexOf("Welcome to MOBI Test Store") !== -1)
+                        if (isSignupEmail && !href) {
+                            href = element.attributes.href
+                        }
+                    });
+                    /* click on link and go to the details of the first Sign Up email */
+                    casper.click("a[href='" + href + "']")
+                    test.assert(href != undefined, "Signup email is found."
+                    )
                 })
             })
+        }
+
+        /**
+         * Open first Sign Up email and
+         */
+        {
+            casper.then(function () {
+                /* CSS selector for the link */
+                var cssLink = "table > tbody > tr:nth-child(2) > td > p:nth-child(3) > a"
+                var href = casper.getElementAttribute(cssLink, "href")
+                var replaced = href.replace("http://www.google.com/url?q=", "")
+                var decoded = decodeURIComponent(replaced)
+                casper.echo("Decoded Sign Up URL: " + decoded)
+                mobi.test.util.context.put('mobi.020.010.010.signupLink', decoded)
+                test.assert(true, '"Set password" link is extracted.')
+            })
+
         }
 
 

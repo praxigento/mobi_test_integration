@@ -1,6 +1,6 @@
 "use strict"
 /**
- * MOBI test staff..
+ * MOBI test staff.
  */
 
 module.exports = {
