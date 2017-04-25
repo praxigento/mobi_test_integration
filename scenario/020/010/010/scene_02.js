@@ -69,6 +69,7 @@
             })
         }
 
+
         /**
          * Go to Inbox and find first sign up email.
          */
@@ -96,8 +97,9 @@
             })
         }
 
+
         /**
-         * Open first Sign Up email and
+         * Open first Sign Up email and save it into persistent context.
          */
         {
             casper.then(function () {
@@ -111,6 +113,37 @@
                 test.assert(true, '"Set password" link is extracted.')
             })
 
+        }
+
+
+        /**
+         * Return to Inbox & delete all emails.
+         */
+        {
+            /* go to Inbox */
+            casper.then(function () {
+                /* CSS selector for the link */
+                var cssInboxLink = "a[href=\\?\\&]"
+                casper.click(cssInboxLink)
+            })
+
+            /* Mark all emails */
+            casper.then(function () {
+                var cssAllCheckboxes = "table.th input[type=checkbox]"
+                var elements = casper.getElementsInfo(cssAllCheckboxes);
+                elements.forEach(function (element) {
+                    casper.echo(JSON.stringify(element))
+                    var value = element.attributes.value
+                    var css = "input[name='t'][value='" + value + "']"
+                    casper.click(css)
+                });
+            })
+
+            /* Press 'Delete' button */
+            casper.then(function () {
+                var cssBtn = "input[value='Delete']"
+                casper.click(cssBtn)
+            })
         }
 
 
