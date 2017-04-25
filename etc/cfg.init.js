@@ -11,7 +11,7 @@ module.exports = {
     url: {
         mage: {
             front: {
-                base: "http://san.mage.test.prxgt.com",
+                base: "http://m2san.local.host.com",
                 aliases: {
                     "catalog": "/catalog/category/view/s/cat-2/id/3/",
                     "prod1": "/catalog/product/view/id/1",
@@ -21,7 +21,7 @@ module.exports = {
                     "prod5": "/catalog/product/view/id/5"
                 }
             },
-            admin: {base: "http://san.mage.test.prxgt.com/EDB5"},
+            admin: {base: "http://m2san.local.host.com/admin"},
             api: {}
         },
         odoo: {
@@ -44,6 +44,43 @@ module.exports = {
             },
         }
     },
-    account: "some accounts here ...",
+    account: {
+        anonymous: {
+            mage: {
+                email: 'mobi.anon@gmail.com',
+                password: 'UserPassword12'
+            },
+            gmail: {
+                email: 'mobi.anon@gmail.com',
+                password: 'F7HVVFxB4ZyhNDbt0yp6'
+            },
+            address: {
+                /* available addresses are: [default|shipping|billing] */
+                default: {
+                    email: 'mobi.anon@gmail.com',
+                    nameFirst: "Anonymous",
+                    nameLast: "MOBI",
+                    company: "Company",
+                    street: "Street",
+                    city: "Riga",
+                    zip: "1010",
+                    country: "LV",
+                    phone: "2918180",
+                    state: "471" // Ādažu novads
+                }
+            }
+        }
+    },
+    /* Payment related data (credit cards, etc.) */
+    payment: {
+        card: {
+            braintree: {
+                number: '4111111111111111',
+                expMonth: '12',
+                expYear: '21',
+                cvv: '321'
+            }
+        }
+    },
     viewport: {width: 1024, height: 800}
 }
