@@ -27,6 +27,7 @@
             casper.thenOpen(url)
             /* clean up authentication and referral cookies */
             mobi.gmail.anon()
+            casper.wait(4000)
         }
 
 
