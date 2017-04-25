@@ -1,5 +1,5 @@
 /**
- * Local configuration for integration MOBI tests.
+ * Project specific configuration for integration MOBI tests.
  *
  * JS format is used because JSON does not support comments.
  *
@@ -9,7 +9,6 @@ module.exports = {
     url: {
         mage: {
             front: {
-                base: "http://m2san.local.host.com",
                 aliases: {
                     "catalog": "/catalog/category/view/s/cat-2/id/3/",
                     "prod1": "/catalog/product/view/id/1",
@@ -19,12 +18,11 @@ module.exports = {
                     "prod5": "/catalog/product/view/id/5"
                 }
             },
-            admin: {base: "http://m2san.local.host.com/admin"},
+            admin: {},
             api: {}
         },
         odoo: {
             web: {
-                base: "http://san.odoo.test.prxgt.com",
                 aliases: {}
             }
         }
@@ -45,12 +43,10 @@ module.exports = {
     account: {
         anonymous: {
             mage: {
-                email: 'mobi.anon@gmail.com',
-                password: 'UserPassword12'
+                email: 'mobi.anon@gmail.com'
             },
             gmail: {
-                email: 'mobi.anon@gmail.com',
-                password: 'F7HVVFxB4ZyhNDbt0yp6'
+                email: 'mobi.anon@gmail.com'
             },
             address: {
                 /* available addresses are: [default|shipping|billing] */
