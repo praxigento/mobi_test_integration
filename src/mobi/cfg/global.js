@@ -1,24 +1,26 @@
 "use strict"
 /**
- * Define structure of the configuration for MOBI tests and default values.
+ * Define global structure of the configuration for MOBI tests and default values.
+ *
+ * All nodes can be overridden in project or instance configuration files (./etc/cfg/...)
  */
 module.exports = {
     url: {
-        mage: { // "set value in './etc/cfg.js:url.mage.*'"
+        mage: {
             admin: {
-                base: "[confugured]",
+                base: "",
                 aliases: {}
             },
             api: {
-                base: "[confugured]",
+                base: "",
                 aliases: {}
             },
             front: {
-                base: "[confugured]",
+                base: "",
                 aliases: {}
             }
         },
-        odoo: { // "set value in './etc/cfg.js:odoo.web.*'"
+        odoo: {
             web: {
                 base: "[confugured]",
                 aliases: {}
@@ -36,5 +38,5 @@ module.exports = {
             }
         }
     },
-    viewport: {"width": 1024, "height": 768} // browser dimensions (can be overridden in './etc/cfg.json')
+    viewport: {"width": 1024, "height": 768} // browser dimensions
 }

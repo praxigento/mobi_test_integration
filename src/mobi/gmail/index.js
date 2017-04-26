@@ -1,6 +1,6 @@
 "use strict"
 /**
- * MOBI Magento related staff
+ * MOBI: Gmail related staff
  */
 
 module.exports = {

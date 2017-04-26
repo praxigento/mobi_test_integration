@@ -1,4 +1,6 @@
 /.idea/
+/etc/cfg/project.js
+/etc/cfg/local.js
 /etc/cfg.project.js
 /etc/cfg.local.js
 /htdocs/xunit.xml

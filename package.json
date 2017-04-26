@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "jsonfile": "^2.4.0",
+    "merge-recursive": "0.0.3",
     "object-path": "^0.11.3",
     "phantomjs-prebuilt": "^2.1.14",
     "slimerjs": "^0.10.3"
@@ -18,8 +19,7 @@
     "test-phantom": "node_modules/casperjs/bin/casperjs --pre=./src/pre.js --xunit=./xunit.xml test ./scenario/",
     "test-slimer": "node_modules/casperjs/bin/casperjs --engine=slimerjs --pre=./src/pre.js --xunit=./xunit.xml test ./scenario/",
     "phantom": "node_modules/casperjs/bin/casperjs test --verbose --log-level=debug --pre=./src/pre.js",
-    "slimer": "node_modules/casperjs/bin/casperjs test --engine=slimerjs --verbose --log-level=debug --pre=./src/pre.js",
-    "scene_020_010_010": "node_modules/casperjs/bin/casperjs test --engine=slimerjs --verbose --log-level=debug --includes=./src/inc.js scenario/020/010/010.js"
+    "slimer": "node_modules/casperjs/bin/casperjs test --engine=slimerjs --verbose --log-level=debug --pre=./src/pre.js"
   },
   "author": "Alex Gusev <alex@flancer64.com>",
   "license": "MIT",

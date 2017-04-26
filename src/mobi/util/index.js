@@ -4,6 +4,6 @@
  */
 
 module.exports = {
-    // jsonfile: require("../../../node_modules/jsonfile/index"),  // https://github.com/jprichardson/node-jsonfile
+    objMerge: require("../../../node_modules/merge-recursive/lib/index"), // see https://github.com/UmbraEngineering/node-merge-recursive
     objPath: require("../../../node_modules/object-path/index") // see https://github.com/mariocasciaro/object-path
 }
