@@ -36,7 +36,7 @@
          */
         {
             /* open catalog URL & switch sore to default mode */
-            var url = mobi.mage.front.getUrl(mobi.test.cfg.url.mage.front.aliases.prod1)
+            var url = mobi.mage.front.getUrl(mobi.cfg.url.mage.front.aliases.prod1)
             casper.thenOpen(url, function (resp) {
                 test.assertTrue((resp.status >= 200) && (resp.status < 400), "Product page is loaded.");
             });

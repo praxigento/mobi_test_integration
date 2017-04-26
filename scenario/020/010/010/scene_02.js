@@ -23,7 +23,7 @@
          * Switch to the working mode.
          */
         {
-            var url = mobi.test.cfg.url.gmail.base
+            var url = mobi.cfg.url.gmail.base
             casper.thenOpen(url)
             /* clean up authentication and referral cookies */
             mobi.gmail.anon()

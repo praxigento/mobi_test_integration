@@ -12,8 +12,8 @@ var result = function getUrl(path) {
     /* shortcuts for working variables */
     var mobi = getTestContext()
     var casper = mobi.casper
-    var baseUrl = mobi.test.cfg.url.odoo.web.base
-    var aliases = mobi.test.cfg.url.odoo.web.aliases
+    var baseUrl = mobi.cfg.url.odoo.web.base
+    var aliases = mobi.cfg.url.odoo.web.aliases
 
     /* functionality */
     casper.echo("  construct Odoo Web URL for path '" + path + "'.", "PARAMETER")

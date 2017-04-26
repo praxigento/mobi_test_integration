@@ -5,7 +5,7 @@
 
 var fn = function setViewport() {
     var mobi = getTestContext()
-    var dimensions = mobi.test.cfg.viewport
+    var dimensions = mobi.cfg.viewport
     mobi.casper.page.viewportSize = dimensions
 };
 

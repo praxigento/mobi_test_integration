@@ -12,8 +12,8 @@ var result = function getUrl(path) {
     /* shortcuts for working variables */
     var mobi = getTestContext()
     var casper = mobi.casper
-    var baseUrl = mobi.test.cfg.url.mage.admin.base
-    var aliases = mobi.test.cfg.url.mage.admin.aliases
+    var baseUrl = mobi.cfg.url.mage.admin.base
+    var aliases = mobi.cfg.url.mage.admin.aliases
 
     /* functionality */
     casper.echo("  construct Magento Admin URL for path '" + path + "'.", "PARAMETER")
