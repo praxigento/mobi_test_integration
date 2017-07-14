@@ -4,9 +4,23 @@
 
   aptitude install npm nodejs-legacy
 
+
+
+
+## Available Tests
+
+```bash
+$ sh autotest.sh generic
+$ sh autotest.sh santegra
+```
+
+
+
 ## Configuration 
 
 Setup local configuration in `./etc/cfg.js` (see `./etc/cfg.init.js`).
+
+
 
 ## Run tests
 
@@ -29,6 +43,8 @@ $ npm test
 $ npm run-script test-phantom
 $ npm run-script test-slimer
 ```
+
+
 
 ## Project structure
 
