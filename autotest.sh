@@ -3,16 +3,17 @@
 #   Launch scripts for MOBI integration tests.
 ## *************************************************************************
 
-
 # pin current folder and deployment root folder
 CUR_DIR="$PWD"
 DIR_ROOT="$( cd "$( dirname "$0" )" && pwd )"
+
 
 ##
 #   Parse input arguments.
 ##
 # first arg is the name of the project (to copy project level config into ./etc/cfg/project.js)
 PROJECT=$1
+
 
 ##
 #   Copy project configuration into ./etc/cfg/project.js to be merged with global & local configs on start.
@@ -26,7 +27,7 @@ then
 else
     echo "There is no expected project configuration in '${FILE_PRJ_CFG}'. Aborting..."
     cd ${DIR_CUR}
-    exit
+    exit 255
 fi
 
 
@@ -37,6 +38,7 @@ echo ""
 echo "Go to the root folder and run all tests"
 cd ${DIR_ROOT}/
 /usr/bin/npm test > ${DIR_ROOT}/htdocs/log.txt
+
 
 ##
 #   Finalize job.
