@@ -55,3 +55,11 @@ $ npm run-script test-slimer
 * **./htdocs/**: root folder for accessing testing result using web;
 * **./scenario/**: test scenarios;
 * **./src/**: functions and data structures are used in test scenarios;
+
+#### Installation specific Mozilla Firefox for SlimerJS
+
+``` bash
+$ wget sourceforge.net/projects/ubuntuzilla/files/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_52.0.2-0ubuntu1_amd64.deb
+$ dpkg -i firefox-mozilla-build_52.0.2-0ubuntu1_amd64.deb
+$ apt-mark hold firefox
+```
