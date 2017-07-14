@@ -1,5 +1,9 @@
 # Integration tests for MOBI projects
 
+### Installation
+
+  aptitude install npm nodejs-legacy
+
 ## Configuration 
 
 Setup local configuration in `./etc/cfg.js` (see `./etc/cfg.init.js`).
