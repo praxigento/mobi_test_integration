@@ -8,7 +8,8 @@
     "jsonfile": "^2.4.0",
     "object-path": "^0.11.3",
     "phantomjs-prebuilt": "^2.1.14",
-    "slimerjs": "^0.10.3"
+    "slimerjs": "^0.10.3",
+    "is-mergeable-object": "*"
   },
   "devDependencies": {
     "casperjs": "^1.1.3",
