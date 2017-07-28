@@ -1,10 +1,11 @@
 /.idea/
-/etc/cfg/project.js
-/etc/cfg/local.js
-/etc/cfg.project.js
+/atlassian-ide-plugin.xml
 /etc/cfg.local.js
+/etc/cfg.project.js
+/etc/cfg/local.js
+/etc/cfg/project.js
 /htdocs/xunit.xml
 /node_modules/
-/var/tmp/
-/atlassian-ide-plugin.xml
 /npm-debug.log
+/ttttest*
+/var/tmp/
