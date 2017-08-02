@@ -82,32 +82,29 @@ async function main(mobi) {
         await chromy.iframe('iframe#braintree-hosted-field-number', async frame => {
             await frame.wait('input[name=credit-card-number]');
             await frame.type('input[name=credit-card-number]', '4111111111111111');
-            console.log('Card number is filled.');
         });
-
+        console.log('Card number is filled.');
 
         await chromy.wait('iframe#braintree-hosted-field-expirationMonth');
         await chromy.iframe('iframe#braintree-hosted-field-expirationMonth', async frame => {
             await frame.wait('input[name=expiration-month]');
             await frame.type('input[name=expiration-month]', '12');
-            console.log('Exp. month is filled.');
         });
-
+        console.log('Exp. month is filled.');
 
         await chromy.wait('iframe#braintree-hosted-field-expirationYear');
         await chromy.iframe('iframe#braintree-hosted-field-expirationYear', async frame => {
             await frame.wait('input[name=expiration-year]');
             await frame.type('input[name=expiration-year]', '21');
-            console.log('Exp. year is filled.');
         });
-
+        console.log('Exp. year is filled.');
 
         await chromy.wait('iframe#braintree-hosted-field-cvv');
         await chromy.iframe('iframe#braintree-hosted-field-cvv', async frame => {
             await frame.wait('input[name=cvv]');
             await frame.type('input[name=cvv]', '321');
-            console.log('CVV is filled.');
         });
+        console.log('CVV is filled.');
 
         console.log('Click "Place Order" button.');
         await chromy.wait('#checkout-payment-method-load');
