@@ -3,6 +3,7 @@
  */
 
 /* libs and includes */
+const fs = require('fs');
 const mobi = require('../../../../src/mobi');
 
 /**
@@ -12,10 +13,10 @@ const mobi = require('../../../../src/mobi');
  * @returns {Promise.<void>}
  */
 async function main(mobi) {
-    try {
-        /* get automation engine from app. context */
-        const chromy = mobi.chromy;
+    /* get automation engine from app. context */
+    const chromy = mobi.chromy;
 
+    try {
         console.log('Go to front.');
         /* start test scenario*/
         await chromy.goto(mobi.cfg.url.mage.front.base);
@@ -106,6 +107,9 @@ async function main(mobi) {
         await chromy.click('#checkout-payment-method-load > div > div > div.payment-method.payment-method-braintree._active > div.payment-method-content > div.actions-toolbar > div > button');
 
     } catch (e) {
+        chromy.screenshot().result(
+            (png) => fs.writeFileSync('out.png', png)
+        );
         console.log('there was an error: ', e);
     }
     /* close browser for standalone processing */
