@@ -87,18 +87,21 @@ async function main(mobi) {
 
         await chromy.wait('iframe#braintree-hosted-field-expirationMonth');
         await chromy.iframe('iframe#braintree-hosted-field-expirationMonth', async frame => {
+            await frame.wait('input[name=expiration-month]');
             await frame.type('#expiration-month', '12');
         });
 
 
         await chromy.wait('iframe#braintree-hosted-field-expirationYear');
         await chromy.iframe('iframe#braintree-hosted-field-expirationYear', async frame => {
+            await frame.wait('input[name=expiration-year]');
             await frame.type('#expiration-year', '21');
         });
 
 
         await chromy.wait('iframe#braintree-hosted-field-cvv');
         await chromy.iframe('iframe#braintree-hosted-field-cvv', async frame => {
+            await frame.wait('input[name=cvv]');
             await frame.type('#cvv', '321');
         });
 
@@ -107,6 +110,7 @@ async function main(mobi) {
         await chromy.click('#checkout-payment-method-load > div > div > div.payment-method.payment-method-braintree._active > div.payment-method-content > div.actions-toolbar > div > button');
 
     } catch (e) {
+        await chromy.scroll(0, 300);
         let png = await chromy.screenshot();
         fs.writeFileSync('out.png', png);
         console.log('there was an error: ', e);
