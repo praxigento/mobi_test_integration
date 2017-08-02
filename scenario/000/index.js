@@ -20,7 +20,6 @@ if (!mobi.batch) {
 async function main(mobi) {
     /* run suite's scenarios */
     await require('./000')(mobi);
-    await require('./010')(mobi);
 
     /* close browser for standalone mode */
     if (mobi.batchFile === __filename) await mobi.chromy.close();

@@ -12,12 +12,13 @@ async function main(mobi) {
 
     console.log('Start scenario: "%s".', desc);
 
-    console.log('Check Magento front.');
-    await chromy.goto(mobi.cfg.url.mage.front.base);
+    const front = mobi.cfg.url.mage.front.base;
+    console.log('Check Magento front (%s).', front);
+    await chromy.goto(front);
 
-    console.log('Check Magento backend.');
-    await chromy.goto(mobi.cfg.url.mage.admin.base);
-    await chromy.wait(1000);
+    const back = mobi.cfg.url.mage.admin.base;
+    console.log('Check Magento backend (%s).', back);
+    await chromy.goto(back);
 
     console.log('End scenario: "%s".', desc);
 
