@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 ## *************************************************************************
 #   Launch scripts for MOBI integration tests.
+#   TODO: this is deprecated script and is not used. Fix is needed.
 ## *************************************************************************
 
 # pin current folder and deployment root folder

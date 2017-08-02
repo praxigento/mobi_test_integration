@@ -2,17 +2,7 @@
 
 ### Installation
 
-  aptitude install npm nodejs-legacy
-
-
-
-
-## Available Tests
-
-```bash
-$ sh autotest.sh generic
-$ sh autotest.sh santegra
-```
+  npm install
 
 
 
@@ -24,27 +14,8 @@ Setup local configuration in `./etc/cfg.js` (see `./etc/cfg.init.js`).
 
 ## Run tests
 
-Run one test script directly:
 ```bash
-$ ./node_modules/casperjs/bin/casperjs test ./scenario/020/010/010/scene_01.js --pre=./src/pre.js
-$ ./node_modules/casperjs/bin/casperjs test ./scenario/020/010/010/scene_01.js --pre=./src/pre.js --engine=slimerjs
-
-```
-
-Run one test script using 'npm' shortcuts:
-```bash
-$ npm run phantom ./scenario/000/000.js
-$ npm run slimer ./scenario/000/000.js
-
-$ npm run-script phantom ./scenario/020/010/010/scene_01.js
-$ npm run-script slimer ./scenario/020/010/010/scene_01.js
-```
-
-Run all scenarios:
-```bash
-$ npm test
-$ npm run-script test-phantom
-$ npm run-script test-slimer
+$ node ./scenario/all.js
 ```
 
 
@@ -52,14 +23,5 @@ $ npm run-script test-slimer
 ## Project structure
 
 * **./etc/**: local configuration (URLs. accounts, etc.);
-* **./htdocs/**: root folder for accessing testing result using web;
 * **./scenario/**: test scenarios;
 * **./src/**: functions and data structures are used in test scenarios;
-
-#### Installation specific Mozilla Firefox for SlimerJS
-
-``` bash
-$ wget sourceforge.net/projects/ubuntuzilla/files/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_52.0.2-0ubuntu1_amd64.deb
-$ dpkg -i firefox-mozilla-build_52.0.2-0ubuntu1_amd64.deb
-$ apt-mark hold firefox
-```

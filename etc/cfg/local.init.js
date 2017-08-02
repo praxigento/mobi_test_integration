@@ -3,7 +3,7 @@
  *
  * JS format is used because JSON does not support comments.
  *
- * Configuration values are mapped to working data tree in 'src/mobi/index.js'.
+ * Configuration values are mapped to working data tree in 'src/cfg.js'.
  */
 module.exports = {
     url: {
@@ -80,5 +80,5 @@ module.exports = {
             }
         }
     },
-    viewport: {width: 1024, height: 800}
+    chromy: {visible: true}
 }

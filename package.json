@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "chromy": "^0.3.7"
+    "chromy": "^0.4"
   },
   "author": "Alex Gusev <alex@flancer64.com>",
   "license": "MIT",

@@ -1,33 +1,24 @@
-(function (mobi) {
-    "use strict"
+/**
+ * Just check MOBI components (Magento/Odoo web sites).
+ */
+const mobi = require('../../src/mobi');
 
-    var mobi = mobi
-    var desc = "Entries checking"
+/**
+ * @param {mobi} mobi
+ * @returns {Promise.<void>}
+ */
+async function main(mobi) {
+    const chromy = mobi.chromy;
 
+    await chromy.goto(mobi.cfg.url.mage.front.base);
 
-    /* start scenario  */
+    if (!mobi.batch) {
+        await chromy.close();
+    }
+}
 
-    casper.test.begin(desc, 3, function suite(test) {
+if (!mobi.batch) {
+    main(mobi);
+}
 
-        mobi.test.start(mobi)
-
-        var url = mobi.mage.front.getUrl('/')
-        casper.thenOpen(url, function (data) {
-            test.assertTrue((data.status >= 200) && (data.status < 400), 'Magento Front is alive.')
-        })
-
-        var url = mobi.mage.admin.getUrl('/')
-        casper.thenOpen(url, function (data) {
-            test.assertTrue((data.status >= 200) && (data.status < 400), 'Magento Admin is alive.')
-        })
-
-        var url = mobi.odoo.web.getUrl('/')
-        casper.thenOpen(url, function (data) {
-            test.assertTrue((data.status >= 200) && (data.status < 400), 'Odoo web is alive.')
-        })
-
-        mobi.test.run(test)
-
-    })
-
-})(mobi)
+module.exports = main;
