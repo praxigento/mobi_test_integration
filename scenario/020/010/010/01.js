@@ -88,21 +88,21 @@ async function main(mobi) {
         await chromy.wait('iframe#braintree-hosted-field-expirationMonth');
         await chromy.iframe('iframe#braintree-hosted-field-expirationMonth', async frame => {
             await frame.wait('input[name=expiration-month]');
-            await frame.type('#expiration-month', '12');
+            await frame.type('input[name=expiration-month]', '12');
         });
 
 
         await chromy.wait('iframe#braintree-hosted-field-expirationYear');
         await chromy.iframe('iframe#braintree-hosted-field-expirationYear', async frame => {
             await frame.wait('input[name=expiration-year]');
-            await frame.type('#expiration-year', '21');
+            await frame.type('input[name=expiration-year]', '21');
         });
 
 
         await chromy.wait('iframe#braintree-hosted-field-cvv');
         await chromy.iframe('iframe#braintree-hosted-field-cvv', async frame => {
             await frame.wait('input[name=cvv]');
-            await frame.type('#cvv', '321');
+            await frame.type('input[name=cvv]', '321');
         });
 
         console.log('Click "Place Order" button.');
