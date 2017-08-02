@@ -107,9 +107,8 @@ async function main(mobi) {
         await chromy.click('#checkout-payment-method-load > div > div > div.payment-method.payment-method-braintree._active > div.payment-method-content > div.actions-toolbar > div > button');
 
     } catch (e) {
-        chromy.screenshot().result(
-            (png) => fs.writeFileSync('out.png', png)
-        );
+        let png = await chromy.screenshot();
+        fs.writeFileSync('out.png', png);
         console.log('there was an error: ', e);
     }
     /* close browser for standalone processing */
