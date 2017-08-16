@@ -15,6 +15,9 @@ const mobi = require('../../../../src/mobi');
 async function main(mobi) {
     /* get automation engine from app. context */
     const chromy = mobi.chromy;
+    const front = mobi.cfg.url.mage.front.base;
+    const prod_1 = mobi.cfg.url.mage.front.aliases["prod1"];
+    const prod_4 = mobi.cfg.url.mage.front.aliases["prod4"];
 
     try {
         console.log('Go to front.');
@@ -29,14 +32,14 @@ async function main(mobi) {
 
 
         console.log('Add BoostIron to cart.');
-        await chromy.goto('http://gen.mage.test.mobi.prxgt.com/catalog/product/view/id/1');
+        await chromy.goto(front + prod_1);
         await chromy.click('#product-addtocart-button', {waitLoadEvent: false});
         await chromy.wait(cssConfirm);
         console.log('BoostIron is added.');
 
 
         console.log('Add BeeRoyal to cart.');
-        await chromy.goto('http://gen.mage.test.mobi.prxgt.com/catalog/product/view/id/4');
+        await chromy.goto(front + prod_4);
         await chromy.evaluate(() => {
             let qty = document.querySelector('#qty');
             qty.value = '10';
@@ -47,7 +50,7 @@ async function main(mobi) {
 
 
         console.log('Go to checkout page.');
-        await chromy.goto('http://gen.mage.test.mobi.prxgt.com/checkout/');
+        await chromy.goto(front + '/checkout/');
         console.log('Wait for "Email" field will appear on the form.');
         await chromy.wait('#customer-email');
         await chromy.type('#customer-email', 'mobi.anon@gmail.com');
