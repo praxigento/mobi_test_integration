@@ -16,8 +16,9 @@ async function main(mobi) {
     /* get automation engine from app. context */
     const chromy = mobi.chromy;
     const front = mobi.cfg.url.mage.front.base;
-    const prod_1 = mobi.cfg.url.mage.front.aliases["prod1"];
-    const prod_4 = mobi.cfg.url.mage.front.aliases["prod4"];
+    const uriProd10674 = front + mobi.cfg.url.mage.front.aliases["prod1"];
+    const uriProd212 = front + mobi.cfg.url.mage.front.aliases["prod4"];
+    const uriCheckout = front + '/checkout/';
 
     try {
         console.log('Go to front.');
@@ -32,14 +33,14 @@ async function main(mobi) {
 
 
         console.log('Add BoostIron to cart.');
-        await chromy.goto(front + prod_1);
+        await chromy.goto(uriProd10674);
         await chromy.click('#product-addtocart-button', {waitLoadEvent: false});
         await chromy.wait(cssConfirm);
         console.log('BoostIron is added.');
 
 
         console.log('Add BeeRoyal to cart.');
-        await chromy.goto(front + prod_4);
+        await chromy.goto(uriProd212);
         await chromy.evaluate(() => {
             let qty = document.querySelector('#qty');
             qty.value = '10';
@@ -50,7 +51,7 @@ async function main(mobi) {
 
 
         console.log('Go to checkout page.');
-        await chromy.goto(front + '/checkout/');
+        await chromy.goto(uriCheckout);
         console.log('Wait for "Email" field will appear on the form.');
         await chromy.wait('#customer-email');
         await chromy.type('#customer-email', 'mobi.anon@gmail.com');
@@ -112,7 +113,8 @@ async function main(mobi) {
         console.log('Click "Place Order" button.');
         await chromy.wait('#checkout-payment-method-load');
         await chromy.click('#checkout-payment-method-load > div > div > div.payment-method.payment-method-braintree._active > div.payment-method-content > div.actions-toolbar > div > button');
-
+        console.log('"Place Order" button is clicked.');
+        await chromy.wait('#maincontent > div.columns > div > div.checkout-success');
     } catch (e) {
         await chromy.scroll(0, 250);
         let png = await chromy.screenshot();

@@ -4,18 +4,19 @@
 
 /* libs */
 const fs = require('fs');
+const merge = require('deepmerge');
 
 /* load configuration (application defaults, project defaults, local instance defaults) */
 /** @type {mobi.cfg} */
-const cfg = require('./cfg');
+let cfg = require('./cfg');
 
 if (fs.existsSync(__dirname + '/../etc/cfg/project.js')) {
     const cfgPrj = require('../etc/cfg/project');
-    Object.assign(cfg, cfgPrj);
+    cfg = merge(cfg, cfgPrj);
 }
 if (fs.existsSync(__dirname + '/../etc/cfg/local.js')) {
     const cfgLocal = require('../etc/cfg/local');
-    Object.assign(cfg, cfgLocal);
+    cfg = merge(cfg, cfgLocal);
 }
 
 /* init Chromy */
