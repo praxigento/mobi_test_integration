@@ -1,6 +1,6 @@
 # Integration tests for MOBI projects
 
-
+<https://github.com/praxigento/mobi_test_integration>
 
 ## Installation
 
@@ -29,7 +29,9 @@ Ubuntu:
 
 Setup local configuration in `./etc/cfg.js` (see `./etc/cfg.init.js`).
 
+###  Chromy available options
 
+<https://github.com/OnetapInc/chromy#chromyoptions>
 
 ## Run tests
 
