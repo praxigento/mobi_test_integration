@@ -9,3 +9,5 @@
 /npm-debug.log
 /ttttest*
 /var/tmp/
+out.png
+package-lock.json
