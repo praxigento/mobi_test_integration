@@ -38,7 +38,7 @@ fi
 echo ""
 echo "Go to the root folder and run all tests"
 cd ${DIR_ROOT}/
-/usr/bin/npm test > ${DIR_ROOT}/htdocs/log.txt
+node ./scenario/all.js
 
 
 ##
